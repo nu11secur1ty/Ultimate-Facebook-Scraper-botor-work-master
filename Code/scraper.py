@@ -375,7 +375,7 @@ def save_to_file(name, elements, status, current_section):
             try:
                 if results[0][0] == '/':
                     results = [r.pop(0) for r in results]
-                    results = [("https://en-gb.facebook.com/" + x) for x in results]
+                    results = [("https://facebook.com/" + x) for x in results]
             except:
                 pass
 
@@ -454,15 +454,15 @@ def scrap_data(id, scan_list, section, elements_path, save_status, file_names):
 
 def create_original_link(url):
     if url.find(".php") != -1:
-        original_link = "https://en-gb.facebook.com/" + ((url.split("="))[1])
+        original_link = "https://facebook.com/" + ((url.split("="))[1])
 
         if original_link.find("&") != -1:
             original_link = original_link.split("&")[0]
 
     elif url.find("fnr_t") != -1:
-        original_link = "https://en-gb.facebook.com/" + ((url.split("/"))[-1].split("?")[0])
+        original_link = "https://facebook.com/" + ((url.split("/"))[-1].split("?")[0])
     elif url.find("_tab") != -1:
-        original_link = "https://en-gb.facebook.com/" + (url.split("?")[0]).split("/")[-1]
+        original_link = "https://facebook.com/" + (url.split("?")[0]).split("/")[-1]
     else:
         original_link = url
 
@@ -617,7 +617,7 @@ def login(email, password):
                  )
             exit()
 
-        driver.get("https://en-gb.facebook.com")
+        driver.get("https://facebook.com")
         driver.maximize_window()
 
         # filling the form
@@ -637,7 +637,7 @@ def login(email, password):
 # -----------------------------------------------------------------------------
 
 def main():
-    ids = ["https://en-gb.facebook.com/" + line.split("/")[-1] for line in open("input.txt", newline='\n')]
+    ids = ["https://facebook.com/" + line.split("/")[-1] for line in open("input.txt", newline='\n')]
 
     if len(ids) > 0:
         # Getting email and password from user to login into his/her profile
